@@ -1,0 +1,47 @@
+a) if password === 'abcd'
+b)console.log ('welcome')
+c) console.log ('Error')
+
+const pass = (password) =>{
+    return new Promise((resolve, reject) => {
+        if(password === 'abcd'){
+        resolvefinction('Welcome')
+    }else{
+        rejectFunction('Error')
+})
+
+
+// create a promise
+
+const request = require('request')
+
+function getData(url) {
+  // Create a new promise
+  return new Promise((resolve, reject) => {
+    // Do a request
+    request(url, (error, res, data) => {
+      // if the request returns an error call the reject function (= console.log)
+      if (error) reject(error);
+      // if the request does not return an error, return the data
+      else resolve(data);
+    });
+  });
+}
+
+getData(`https://api.adviceslip.com/advice`)
+  .then(data => console.log(data))
+  .catch(error => console.log(error));
+
+
+
+
+
+
+
+
+
+  request
+   .get('https://example.com/search')
+   .then(res => {
+
+   });
