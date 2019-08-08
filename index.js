@@ -1,7 +1,7 @@
 
 //https://api.openweathermap.org/data/2.5/weather?q={city name}&appid=e4bc92a2b88c41c65d239e8d126bf543
  
-async function fetchWeatherDetails() {
+function fetchWeatherDetails() {
 
     axios.get('https://api.openweathermap.org/data/2.5/weather?q=leiden&appid=e4bc92a2b88c41c65d239e8d126bf543')
     .then(response => response.data)
@@ -18,7 +18,11 @@ function displayWeatherDetails(data){
     const temperature = document.getElementById("temperature");
     const humidity = document.getElementById("humidity");
 
-    cityName.innerHTML = data.name
+    cityName.textContent = data.name;
+    icon.src = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    temperature.innerHTML= data.main.temp;
+    humidity.textContent = data.main.humidity;
+
 
 }
 
