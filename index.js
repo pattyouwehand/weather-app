@@ -1,30 +1,24 @@
-// const Axios = require('axios')
 
 //https://api.openweathermap.org/data/2.5/weather?q={city name}&appid=e4bc92a2b88c41c65d239e8d126bf543
  
-function fetchWeatherDetails() {
-    console.log('I am here!')
-    // Axios.get('https://api.openweathermap.org/data/2.5/weather?q=leiden&appid=e4bc92a2b88c41c65d239e8d126bf543').then(response => {
-    //     console.log(response)
-    // })
-    fetch('https://api.openweathermap.org/data/2.5/weather\?q\=leiden\&appid\=e4bc92a2b88c41c65d239e8d126bf543', {
-        method: 'GET'
-    })
-    .then(body => {
-        console.log('DATA: ', body)
-        displayWeatherDetails(body)
+async function fetchWeatherDetails() {
+
+    axios.get('https://api.openweathermap.org/data/2.5/weather?q=leiden&appid=e4bc92a2b88c41c65d239e8d126bf543')
+    .then(response => response.data)
+    .then(data => {
+        console.log(data)
+        displayWeatherDetails(data)
     })
     .catch(err => console.log('ERROR:', err))
-    
 }
 
-function displayWeatherDetails(){
+function displayWeatherDetails(data){
     const cityName = document.getElementById("city-name");
     const icon = document.getElementById("icon");
     const temperature = document.getElementById("temperature");
     const humidity = document.getElementById("humidity");
 
-    // cityName.textContent = 
+    cityName.innerHTML = data.name
 
 }
 
